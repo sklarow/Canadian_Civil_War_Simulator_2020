@@ -2,6 +2,7 @@ from World import World
 import time
 from _datetime import date, timedelta
 
+# placing information of each canadian province and its borders in region data
 regionData = list([])
 regionData.append(("Ontario", ["Quebec", "Manitoba", "Nunavut"]))
 regionData.append(("British Columbia", ["Alberta", "Yukon", "Northwest Territories"]))
