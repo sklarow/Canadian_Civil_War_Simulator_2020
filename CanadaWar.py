@@ -32,7 +32,7 @@ print("---------------------------------------------------")
 
 
 while canada.not_united():
-    time.sleep(.0)
+    time.sleep(.01)
     current_date = current_date + timedelta(30)
     canada.update()
     print("---------------------------------------------------")
