@@ -2,6 +2,7 @@ from World import World
 import time
 from _datetime import date, timedelta
 
+
 # placing information of each canadian province and its borders in regionData
 regionData = list([])
 regionData.append(("Ontario", ["Quebec", "Manitoba", "Nunavut"]))
@@ -31,8 +32,8 @@ print("---------------------------------------------------")
 
 
 while canada.not_united():
-    time.sleep(10)
-    current_date = current_date + timedelta(1)
+    time.sleep(.0)
+    current_date = current_date + timedelta(30)
     canada.update()
     print("---------------------------------------------------")
     print(str(current_date.month) + '\\' + str(current_date.day) + '\\' + str(current_date.year))

@@ -18,11 +18,14 @@ class Empire:
         self._homeland = homeland
         homeland.curr_emp, homeland.origin_emp = (self, self)
 
+    def size(self):
+        return len(self._conquered)
+
     def get_conquered(self):
         return self._conquered
 
     def defeated(self):
-        return len(self.get_conquered()) == 0
+        return self.size() == 0
 
     def gain_independence(self):
         return self._takeover(self._homeland)
