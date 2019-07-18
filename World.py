@@ -29,11 +29,10 @@ class World:
         while not_chosen:
             chosen_empire = choice(self._empires)
             if chosen_empire.defeated():
-                self._latest_action = "teste."
-            #    if randint(0, 20) == 0:
-            #        old_emp = chosen_empire.gain_independence()[1]
-            #        self._latest_action = chosen_empire.name() + " ganhou independência de " + old_emp.name()
-            #        not_chosen = False
+                if randint(1, 1000) == 1:
+                    old_emp = chosen_empire.gain_independence()[1]
+                    self._latest_action = chosen_empire.name() + " ganhou independência de " + old_emp.name()
+                    not_chosen = False
             else:
                 if randint(0, len(self._territories)) < (chosen_empire.size()/2):
                     conquered_territory, old_emp = chosen_empire.conquer()
