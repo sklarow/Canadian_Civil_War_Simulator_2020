@@ -15,31 +15,32 @@ class World:
             for name in info:
                 terr.border_territory.append(self._find_territory(name))
         self._alive = len(self._empires)
-        self._latest_action = "war begins"
+        self._latest_action = "-- CWB WAR SIMULATOR STARTS  --"
         self._winner = None
 
     def _find_territory(self, terr_name):
         for terr in self._territories:
             if terr.name == terr_name:
                 return terr
-        raise Exception("Territory doesn't exist")
+        raise Exception("Território não existe")
 
     def update(self):
         not_chosen = True
         while not_chosen:
             chosen_empire = choice(self._empires)
             if chosen_empire.defeated():
-                if randint(0, 20) == 0:
-                    old_emp = chosen_empire.gain_independence()[1]
-                    self._latest_action = chosen_empire.name() + " gained independence from " + old_emp.name()
-                    not_chosen = False
+                self._latest_action = "teste."
+            #    if randint(0, 20) == 0:
+            #        old_emp = chosen_empire.gain_independence()[1]
+            #        self._latest_action = chosen_empire.name() + " ganhou independência de " + old_emp.name()
+            #        not_chosen = False
             else:
                 if randint(0, len(self._territories)) < (chosen_empire.size()/2):
                     conquered_territory, old_emp = chosen_empire.conquer()
-                    self._latest_action = chosen_empire.name()+" conquered "+conquered_territory.name
-                    self._latest_action += " from " + old_emp.name()
+                    self._latest_action = chosen_empire.name()+" conquistou "+conquered_territory.name
+                    self._latest_action += " de " + old_emp.name()
                     if old_emp.defeated():
-                        self._latest_action += '\n' + old_emp.name() + " is completely defeated"
+                        self._latest_action += '\n' + old_emp.name() + " está completamente derrotada."
                     not_chosen = False
         self._alive = 0
         for emp in self._empires:
@@ -64,5 +65,6 @@ class World:
         world_str = ""
         world_str += self._latest_action + "\n\n"
         for emp in self._empires:
-            world_str += str(emp) + '\n'
+            if not emp.defeated():
+                world_str += str(emp) + '\n'
         return world_str
